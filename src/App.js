@@ -1,25 +1,46 @@
-import logo from './logo.svg';
+import logo from './1.svg';
 import './App.css';
-
-function App() {
+export function Search() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <div className="search">
+        adf search<br />
+        <input type="text" />
+      </div>
+      <div className='main'>
+        <img src={logo} className="1" alt="logo" />
+        <img src={logo} className="1" alt="logo" />
+        <img src={logo} className="1" alt="logo" />
+        <img src={logo} className="1" alt="logo" />
+        <img src={logo} className="1" alt="logo" />
+        <img src={logo} className="1" alt="logo" />
+        <img src={logo} className="1" alt="logo" />
+        <img src={logo} className="1" alt="logo" />
+        <img src={logo} className="1" alt="logo" />
+        <img src={logo} className="1" alt="logo" />
+        <img src={logo} className="1" alt="logo" />
+        <img src={logo} className="1" alt="logo" />
+        <img src={logo} className="1" alt="logo" />
+        <img src={logo} className="1" alt="logo" />
+        <img src={logo} className="1" alt="logo" />
+        <img src={logo} className="1" alt="logo" />
+        <img src={logo} className="1" alt="logo" />
+
+
+      </div>
+    </>
+  )
 }
 
-export default App;
+
+
+              //  <img src="1.svg" width={'399px'} alt="" />
+              //   <img className='img' src="2.svg" alt="" />
+              //   <img className='img' src="3.svg" alt="" />
+              //   <img className='img' src="4.svg" alt="" />
+              //   <img className='img' src="5.svg" alt="" />
+              //   <img className='img' src="6.svg" alt="" />
+              //   <img className='img' src="7.svg" alt="" />
+              //   <img className='img' src="8.svg" alt="" />
+              //   <img className='img' src="9.svg" alt="" />
+              //   <img className='img' src="9.svg" alt="" />
