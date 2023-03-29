@@ -1,46 +1,72 @@
-import logo from './1.svg';
+import { useEffect, useState } from 'react';
+import { createApi } from 'unsplash-js';
 import './App.css';
+function AllImages(props) {
+  const [images, setImages] = useState([]);
+  const unsplash = createApi({ accessKey: '0ULNREq3mRIMkZQ90jCpPxV_QnvLC-smPmcEqrwio70' })
+
+  useEffect(() => {
+    unsplash.search
+      .getCollections({
+        query: props.value,
+        page: 1,
+        perPage: 10,
+      })
+      .then((result) => {
+        const photoUrls = result.response.results.map((result) => result.preview_photos[0].urls.regular);
+        setImages(photoUrls);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [unsplash.search]);
+
+  return (
+    <>
+      {images.length > 0 ? (images.map((imageUrl) => (
+        <img src={imageUrl} alt="A cat" />
+      ))) : (<p>loading... </p>)}
+
+    </>
+  );
+}
+
+
+
+
 export function Search() {
+  const [value, setValue] = useState('')
+  const [clicked, setClicked] = useState(0)
+
+  function handleKeyDown(e) {
+    if (e.key === 'Enter') setClicked(1);
+  }
+  useEffect(() => {
+    document.getElementById('input').addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [value]);
+
+
+
   return (
     <>
       <div className="search">
-        adf search<br />
-        <input type="text" />
+        Image search <br />
+        <input type="text" id='input' onChange={(e) => setValue(e.target.value)} />
       </div>
+
       <div className='main'>
-        <img src={logo} className="1" alt="logo" />
-        <img src={logo} className="1" alt="logo" />
-        <img src={logo} className="1" alt="logo" />
-        <img src={logo} className="1" alt="logo" />
-        <img src={logo} className="1" alt="logo" />
-        <img src={logo} className="1" alt="logo" />
-        <img src={logo} className="1" alt="logo" />
-        <img src={logo} className="1" alt="logo" />
-        <img src={logo} className="1" alt="logo" />
-        <img src={logo} className="1" alt="logo" />
-        <img src={logo} className="1" alt="logo" />
-        <img src={logo} className="1" alt="logo" />
-        <img src={logo} className="1" alt="logo" />
-        <img src={logo} className="1" alt="logo" />
-        <img src={logo} className="1" alt="logo" />
-        <img src={logo} className="1" alt="logo" />
-        <img src={logo} className="1" alt="logo" />
-
-
+        {clicked ? (< AllImages value={value} />
+        ) : (<p> </p>)}
       </div>
+
+
     </>
   )
 }
 
 
-
-              //  <img src="1.svg" width={'399px'} alt="" />
-              //   <img className='img' src="2.svg" alt="" />
-              //   <img className='img' src="3.svg" alt="" />
-              //   <img className='img' src="4.svg" alt="" />
-              //   <img className='img' src="5.svg" alt="" />
-              //   <img className='img' src="6.svg" alt="" />
-              //   <img className='img' src="7.svg" alt="" />
-              //   <img className='img' src="8.svg" alt="" />
-              //   <img className='img' src="9.svg" alt="" />
-              //   <img className='img' src="9.svg" alt="" />
+// 0ULNREq3mRIMkZQ90jCpPxV_QnvLC - smPmcEqrwio70  acess
+// 3ne8aoJ72oVEDHNufXvyusQ8xMFKzSebaoQ0OIuNiAY  secret
